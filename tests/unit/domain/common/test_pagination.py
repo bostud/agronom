@@ -1,8 +1,9 @@
 import pytest
 from pydantic import ValidationError
 
-from src.domain.common.pagination import DEFAULT_LIMIT, DEFAULT_OFFSET, PageRequest
+from src.domain.common.pagination import PageRequest
 from src.domain.field.exceptions import InvalidPageRequestError
+from src.settings import DEFAULT_LIMIT, DEFAULT_OFFSET
 
 
 def test_valid_page_request_is_accepted() -> None:

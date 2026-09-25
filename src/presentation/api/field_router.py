@@ -9,7 +9,7 @@ from src.application.field.create_field import CreateFieldCommand, CreateFieldUs
 from src.application.field.find_fields_by_point import FindFieldsByPointUseCase
 from src.application.field.get_field_by_id import GetFieldByIdUseCase
 from src.application.field.list_fields import ListFieldsUseCase
-from src.domain.common.pagination import DEFAULT_LIMIT, DEFAULT_OFFSET, PageRequest
+from src.domain.common.pagination import PageRequest
 from src.domain.field.exceptions import (
     FieldNotFoundError,
     InvalidAreaRangeError,
@@ -35,6 +35,7 @@ from src.presentation.api.schemas import (
     FieldSearchResponse,
     QueryPoint,
 )
+from src.settings import DEFAULT_LIMIT, DEFAULT_OFFSET
 
 router = APIRouter(prefix="/fields", tags=["fields"])
 

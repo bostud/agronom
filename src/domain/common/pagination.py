@@ -5,10 +5,7 @@ from typing import Generic, TypeVar
 from pydantic import BaseModel, ConfigDict, model_validator
 
 from src.domain.field.exceptions import InvalidPageRequestError
-
-MAX_LIMIT = 100
-DEFAULT_LIMIT = 20
-DEFAULT_OFFSET = 0
+from src.settings import DEFAULT_LIMIT, DEFAULT_OFFSET, MAX_LIMIT
 
 T = TypeVar("T")
 

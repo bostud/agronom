@@ -10,5 +10,5 @@ class ListFieldsUseCase:
     def __init__(self, repository: FieldRepository) -> None:
         self._repository = repository
 
-    def execute(self, filter: FieldFilter, page_request: PageRequest) -> Page[Field]:
-        return self._repository.find_page(filter, page_request)
+    def execute(self, field_filter: FieldFilter, page_request: PageRequest) -> Page[Field]:
+        return self._repository.find_page(field_filter, page_request)

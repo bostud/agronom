@@ -11,10 +11,9 @@ from src.domain.field.exceptions import (
     PolygonTooSmallError,
     SelfIntersectingPolygonError,
 )
+from src.settings import GEOD_ELLIPSOID, MIN_POLYGON_AREA_HA, SQ_METERS_PER_HECTARE
 
-_GEOD = Geod(ellps="WGS84")
-_SQ_METERS_PER_HECTARE = 10_000.0
-MIN_POLYGON_AREA_HA = 0.1
+_GEOD = Geod(ellps=GEOD_ELLIPSOID)
 
 
 class Coordinate(BaseModel):
@@ -85,7 +84,7 @@ class Polygon(BaseModel):
     @staticmethod
     def _geodesic_area_ha(shapely_polygon: ShapelyPolygon) -> float:
         area_m2, _perimeter_m = _GEOD.geometry_area_perimeter(shapely_polygon)
-        return abs(area_m2) / _SQ_METERS_PER_HECTARE
+        return abs(area_m2) / SQ_METERS_PER_HECTARE
 
     @property
     def area_ha(self) -> float:

@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import os
 from collections.abc import Iterator
 
 from fastapi import Depends
@@ -13,12 +12,9 @@ from src.application.field.get_field_by_id import GetFieldByIdUseCase
 from src.application.field.list_fields import ListFieldsUseCase
 from src.domain.field.repository import FieldRepository
 from src.infrastructure.field.postgis_repository import PostgisFieldRepository
+from src.settings import DATABASE_URL
 
-_DATABASE_URL = os.environ.get(
-    "DATABASE_URL", "postgresql+psycopg://agronom:agronom@localhost:5432/agronom"
-)
-
-_engine = create_engine(_DATABASE_URL)
+_engine = create_engine(DATABASE_URL)
 _SessionLocal = sessionmaker(bind=_engine)
 
 
